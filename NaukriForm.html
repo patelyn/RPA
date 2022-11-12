@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- CSS only -->
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&display=swap');
+    .container{
+        max-width : screen-width;
+        width : 1800;
+        height : 100%;
+        border :  #1b2437 solid 2px;
+        padding : 20px 80px;
+        font-weight : 200px;
+        font-family: 'Inter', sans-serif; 
+        box-sizing : border-box;
+    }
+    .form-title{
+        color : #1b2437;
+        font-size : 26px;
+        margin : 30px 0;
+    }
+    .label{
+        margin-bottom : 10px;
+        font-size : 12px;
+        color :#1b2437;
+    }
+    .filter{
+        padding : 5px;
+        height : 40px;
+        font-size : 12px;
+    }
+    .input-size{
+        height : 26px;
+        width : 500px;
+    }
+    .checkbox{
+        font-size : 11px;
+        font-weight : 300;
+    }
+    input{
+        margin : 0;
+        padding-top : 1px;
+        height : 10px;
+    }
+    .flex{
+        display : flex;
+        flex-direction: row;
+        column-gap: 10px;
+    }
+    .flex>.filter{
+        width : 220px;
+    }
+    .to{
+        padding : 10px 0;
+    }
+    div{
+        margin :  5px 0;
+    }
+    .button{
+        background-color: black;
+        color: white;
+        padding: 8px 30px;
+        text-align: center;
+        display: inline-block;
+        font-size: 20px;
+        margin-top : 20px;
+        cursor: pointer;
+    }
+
+    /*Toggle Switch CSS*/
+    .switch {
+    position: absolute;
+    display: inline-block;
+    left : 650px;
+    width: 60px;
+    height: 34px;
+    }
+    .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    }
+    .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+    }
+
+    input:checked + .slider {
+    background-color: #2196F3;
+    }
+
+    input:focus + .slider {
+    box-shadow: 0 0 1px #2196F3;
+    }
+
+    input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+    }
+    .slider.round {
+    border-radius: 34px;
+    }
+
+    .slider.round:before {
+    border-radius: 50%;
+    }
+
+</style>
+<body>
+    <div class="container">
+        <h1 class="form-title">Search Candidates</h1>
+        <div>
+            <h5 class="label">Keywords</h5>
+            <!-- Rounded switch -->
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+                <h5 class="label">Boolean Search</h5>
+            </label>
+            
+            <input class="filter input-size" placeholder="Enter keywords" type="text">
+        </div>
+        <span>
+            <input type="checkbox" name="musthave" value="keywords" >
+            <label class="checkbox" for="keywords">Mark all keywords as must have</label>
+        </span>
+        <div>
+            <h5 class="label">IT Skills</h5>
+            <span class="flex">
+                <input class="filter input-size" name= "skill" placeholder="Add ITskill" type="text">
+                <input class="filter input-size" name="skill-exp" placeholder="Add experience" type="text">
+            </span>
+            &nbsp;
+            <span class="flex">
+                <input class="filter input-size" name= "skill-2" placeholder="Add ITskill" type="text">
+                <input class="filter input-size" name="skill-exp-2" placeholder="Add experience" type="text">
+            </span>
+            &nbsp;
+            <span class="flex">
+                <input class="filter input-size" name= "skill-3" placeholder="Add ITskill" type="text">
+                <input class="filter input-size" name="skill-exp-3" placeholder="Add experience" type="text">
+            </span>
+        </div>
+        <div>
+            <h5 class="label">Experience</h5>
+            <span class="flex">
+                <select name="min-exp" class="filter">
+                    <option value="option">0</option>
+                    <option value="option">1</option>
+                    <option value="option">2</option>
+                    <option value="option">3</option>
+                    <option value="option">4</option>
+                </select>
+                <span class="to">to</span>
+                <select name="max-exp" class="filter">
+                    <option value="option">0</option>
+                    <option value="option">1</option>
+                    <option value="option">2</option>
+                    <option value="option">3</option>
+                    <option value="option">4</option>
+                </select>
+            </span>
+        </div>
+        <div>
+            <h5 class="label">Current location of the candidate</h5>
+            <input class="filter input-size" name= "location" placeholder="Add location" type="text">
+            <div>
+                <input type="checkbox" name="available_relocate" value="keywords" >
+                <label class="checkbox" for="keywords">Include candidates who prefer to relocate to above locations</label>
+            </div>
+            <div>
+                <input type="checkbox" name="unable_relocate" value="keywords" >
+                <label class="checkbox" for="keywords">Exclude candidates who prefer to relocate to Anywhere in...</label>
+            </div>
+        </div>
+        <div>
+            <h5 class="label">Annual Salary</h5>
+            <div class="flex">
+                <select name="salary-currency" class="filter">
+                    <option value="option">INR</option>
+                </select>
+                <input class="filter input-size" name="min-salary" placeholder="Min salary in Lacs" type="text">
+                <input class="filter input-size" name="max-salary" placeholder="Max salary in Lacs" type="text">
+                <span class=" to label">Lakhs</span>
+            </div>
+            <span>
+                <input type="checkbox" name="nosalary-candidates" value="keywords" >
+                <label class="checkbox" for="keywords">Include candidates who did not mention their current salary</label>
+            </span>
+        </div>
+        <div>
+            <span class="label">Active In</span>
+            <span>
+                <select name="active-in" class="filter">
+                    <option value="option">0-15 days</option>
+                    <option value="option">1 month</option>
+                    <option value="option">3 months</option>
+                </select>
+            </span>
+        </div>
+        <div>
+            <button type="button" class="button" value="Refresh Webpage" onclick="refreshPage()">Clear</button>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function refreshPage() {
+            if (confirm("Are you sure, want to refresh?")) {
+                location.reload();
+            }
+        }
+    </script>
+</body>
+</html>
